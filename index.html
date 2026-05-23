@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Admission Form</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <div class="form-header">
+    <div class="header-text">
+      <h1>Application for Student Admission</h1>
+      <p>Please fill all fields clearly in CAPITAL LETTERS</p>
+    </div>
+    <img src="images/tiny images.jpg" alt="Logo" class="logo">
+  </div>
+
+  <hr class="header-line">
+
+  <form id="admissionForm">
+
+    <div class="section-heading">Student Details</div>
+
+    <div class="student-top">
+      <div class="student-fields">
+
+        <div class="row">
+          <label>Primary Branch</label>
+          <select>
+            <option value="">-- Select Branch --</option>
+            <option>Saidapet</option>
+            <option>Adambakkam</option>
+            <option>Anna Nagar</option>
+            <option>Ambattur</option>
+            <option>Porur</option>
+            <option>Ramapuram</option>
+            <option>Velachery</option>
+            <option>Mylapore</option>
+            <option>Thiruvanmiyur</option>
+            <option>KK Nagar</option>
+            <option>Egmore</option>
+            <option>Sholinganallur</option>
+            <option>Chromepet</option>
+            <option>Pallavaram</option>
+            <option>Medavakkam</option>
+            <option>East Tambaram</option>
+            <option>Avadi</option>
+            <option>Mogappair</option>
+            <option>West Tambaram</option>
+            <option>West Mambalam</option>
+            <option>Poonamallee</option>
+            <option>Perambur</option>
+            <option>Thoraipakkam</option>
+            <option>Ayanavaram</option>
+            <option>Choolaimedu</option>
+            <option>Iyyappanthangal</option>
+            <option>Kodungaiyur</option>
+            <option>Kundrathur</option>
+            <option>Manndai</option>
+            <option>Padur</option>
+            <option>Palavakkam</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label>Student Name</label>
+        
+          <span class="password-wrap">
+            <input type="text" id="studentName">
+          </span>
+        </div>
+
+        <div class="row">
+          <label>Gender</label>
+          <select>
+            <option value="">-- Select --</option>
+            <option>Male</option><option>Female</option><option>Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label>Date of Birth</label>
+          <input type="date">
+        </div>
+
+        <div class="row">
+          <label>Religion</label>
+          <select>
+            <option value="">-- Select --</option>
+            <option>Hindu</option><option>Christian</option><option>Muslim</option>
+            <option>Sikh</option><option>Buddhist</option><option>Jain</option><option>Other</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <label>Referral Type</label>
+          <input type="text">
+        </div>
+
+        <div class="row">
+          <label>Admission Date</label>
+          <input type="date">
+        </div>
+
+        <div class="row">
+          <label>Email ID</label>
+          <input type="text" id="email" placeholder="example@mail.com">
+          <span id="emailError" class="error"></span>
+        </div>
+
+        <div class="row">
+          <label>Password</label>
+          <span class="password-wrap">
+            <input type="password" id="password">
+            <button type="button" id="toggleBtn">Show</button>
+          </span>
+        </div>
+    
+      </div>
+
+      <div class="photo-col">
+        <div class="photo-box">
+          <img id="photoPreview" src="" alt="Student Photo">
+          <p id="photoPlaceholder">Affix photo here</p>
+          <label for="photoInput" class="upload-btn">Choose Photo</label>
+          <input type="file" id="photoInput" accept="image/*">
+        </div>
+      </div>
+    </div>
+
+    <div class="section-heading">Parents Details</div>
+
+    <div class="row"><label>Father's Name</label><input type="text"></div>
+    <div class="row"><label>Father's Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
+    <div class="row"><label>Father's Occupation</label><input type="text"></div>
+    <div class="row"><label>Mother's Name</label><input type="text"></div>
+    <div class="row"><label>Mother's Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
+    <div class="row"><label>Mother's Occupation</label><input type="text"></div>
+
+    <div class="section-heading">School Details</div>
+
+    <div class="row">
+      <label>School Status</label>
+      <span class="radio-group">
+        <label class="radio-label"><input type="radio" name="schoolStatus" value="notGoing"> Not Going</label>
+        <label class="radio-label"><input type="radio" name="schoolStatus" value="going"> Going</label>
+      </span>
+    </div>
+    <div class="row"><label>School Name</label><input type="text"></div>
+    <div class="row"><label>Standard / Section</label><input type="text"></div>
+    <div class="row"><label>School Address</label><input type="text"></div>
+
+    <div class="section-heading">Address Details</div>
+
+    <div class="address-row">
+      <div class="address-block">
+        <label>Current Address</label>
+        <textarea id="currentAddress" rows="4"></textarea>
+      </div>
+      <div class="address-block">
+        <label>Permanent Address</label>
+        <textarea id="permanentAddress" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="section-heading">Guardian Details</div>
+
+    <div class="row"><label>Guardian Name</label><input type="text"></div>
+    <div class="row"><label>Relationship</label><input type="text"></div>
+    <div class="row"><label>Guardian Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
+    <div class="row full-row"><label>Guardian Address</label><input type="text"></div>
+
+    <div class="submit-row">
+      <button type="submit">Submit Application</button>
+    </div>
+
+  </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
