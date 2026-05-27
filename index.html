@@ -22,7 +22,7 @@
 
   <form id="admissionForm">
 
-    <!-- STUDENT DETAILS -->
+
     <div class="section-heading">Student Details</div>
 
     <div class="student-top">
@@ -30,41 +30,44 @@
 
         <div class="row">
           <label>Primary Branch</label>
-          <select>
-            <option value="">-- Select Branch --</option>
-            <option>Saidapet</option>
-            <option>Adambakkam</option>
-            <option>Anna Nagar</option>
-            <option>Ambattur</option>
-            <option>Porur</option>
-            <option>Ramapuram</option>
-            <option>Velachery</option>
-            <option>Mylapore</option>
-            <option>Thiruvanmiyur</option>
-            <option>KK Nagar</option>
-            <option>Egmore</option>
-            <option>Sholinganallur</option>
-            <option>Chromepet</option>
-            <option>Pallavaram</option>
-            <option>Medavakkam</option>
-            <option>East Tambaram</option>
-            <option>Avadi</option>
-            <option>Mogappair</option>
-            <option>West Tambaram</option>
-            <option>West Mambalam</option>
-            <option>Poonamallee</option>
-            <option>Perambur</option>
-            <option>Thoraipakkam</option>
-            <option>Ayanavaram</option>
-            <option>Choolaimedu</option>
-            <option>Iyyappanthangal</option>
-            <option>Kodungaiyur</option>
-            <option>Kundrathur</option>
-            <option>Manndai</option>
-            <option>Padur</option>
-            <option>Palavakkam</option>
-            <option>Other</option>
-          </select>
+          <div class="select-wrap">
+            <select id="branch">
+              <option value="">-- Select Branch --</option>
+              <option>Saidapet</option>
+              <option>Adambakkam</option>
+              <option>Anna Nagar</option>
+              <option>Ambattur</option>
+              <option>Porur</option>
+              <option>Ramapuram</option>
+              <option>Velachery</option>
+              <option>Mylapore</option>
+              <option>Thiruvanmiyur</option>
+              <option>KK Nagar</option>
+              <option>Egmore</option>
+              <option>Sholinganallur</option>
+              <option>Chromepet</option>
+              <option>Pallavaram</option>
+              <option>Medavakkam</option>
+              <option>East Tambaram</option>
+              <option>Avadi</option>
+              <option>Mogappair</option>
+              <option>West Tambaram</option>
+              <option>West Mambalam</option>
+              <option>Poonamallee</option>
+              <option>Perambur</option>
+              <option>Thoraipakkam</option>
+              <option>Ayanavaram</option>
+              <option>Choolaimedu</option>
+              <option>Iyyappanthangal</option>
+              <option>Kodungaiyur</option>
+              <option>Kundrathur</option>
+              <option>Manndai</option>
+              <option>Padur</option>
+              <option>Palavakkam</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <span class="field-error" id="branch-err"></span>
         </div>
 
         <div class="row">
@@ -72,45 +75,59 @@
           <span class="password-wrap">
             <input type="text" id="studentName">
           </span>
+          <span class="field-error" id="studentName-err"></span>
         </div>
 
         <div class="row">
           <label>Gender</label>
-          <select>
-            <option value="">-- Select --</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
+          <div class="select-wrap">
+            <select id="gender">
+              <option value="">-- Select --</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <span class="field-error" id="gender-err"></span>
         </div>
 
         <div class="row">
           <label>Date of Birth</label>
-          <input type="date">
+          <div class="date-wrap">
+            <input type="date" id="dob">
+          </div>
+          <span class="field-error" id="dob-err"></span>
         </div>
 
         <div class="row">
           <label>Religion</label>
-          <select>
-            <option value="">-- Select --</option>
-            <option>Hindu</option>
-            <option>Christian</option>
-            <option>Muslim</option>
-            <option>Sikh</option>
-            <option>Buddhist</option>
-            <option>Jain</option>
-            <option>Other</option>
-          </select>
+          <div class="select-wrap">
+            <select id="religion">
+              <option value="">-- Select --</option>
+              <option>Hindu</option>
+              <option>Christian</option>
+              <option>Muslim</option>
+              <option>Sikh</option>
+              <option>Buddhist</option>
+              <option>Jain</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <span class="field-error" id="religion-err"></span>
         </div>
 
         <div class="row">
           <label>Referral Type</label>
-          <input type="text">
+          <input type="text" id="referralType">
+          <span class="field-error" id="referralType-err"></span>
         </div>
 
         <div class="row">
           <label>Admission Date</label>
-          <input type="date">
+          <div class="date-wrap">
+            <input type="date" id="admissionDate">
+          </div>
+          <span class="field-error" id="admissionDate-err"></span>
         </div>
 
         <div class="row">
@@ -125,31 +142,59 @@
             <input type="password" id="password">
             <button type="button" id="toggleBtn">Show</button>
           </span>
+          <span class="field-error" id="password-err"></span>
         </div>
 
       </div>
 
       <div class="photo-col">
-        <div class="photo-box">
-          <img id="photoPreview" src="" alt="Student Photo">
+        <div class="photo-box" id="photoBox">
+          <div class="photo-icon">📷</div>
           <p id="photoPlaceholder">Affix photo here</p>
           <label for="photoInput" class="upload-btn">Choose Photo</label>
-          <input type="file" id="photoInput" accept="image/*">
+          <input type="file" id="photoInput" accept="image/*" style="display:none;">
+        </div>
+        <div id="photoPreviewBox" class="photo-preview-box" style="display:none;">
+          <img id="photoPreviewLarge" src="" alt="Uploaded Photo">
+          <div class="photo-preview-info">
+            <div class="photo-check">✅ Photo uploaded</div>
+            <span id="photoFileName"></span>
+            <button type="button" id="photoRemoveBtn">✕ Remove</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- PARENTS DETAILS -->
     <div class="section-heading">Parents Details</div>
 
-    <div class="row"><label>Father's Name</label><input type="text"></div>
-    <div class="row"><label>Father's Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
-    <div class="row"><label>Father's Occupation</label><input type="text"></div>
-    <div class="row"><label>Mother's Name</label><input type="text"></div>
-    <div class="row"><label>Mother's Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
-    <div class="row"><label>Mother's Occupation</label><input type="text"></div>
+    <div class="row">
+      <label>Father's Name</label>
+      <input type="text" id="fatherName">
+      <span class="field-error" id="fatherName-err"></span>
+    </div>
+    <div class="row"><label>Father's Phone</label>
+      <input type="tel" id="fatherPhone" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      <span class="field-error" id="fatherPhone-err"></span>
+    </div>
+    <div class="row">
+      <label>Father's Occupation</label>
+      <input type="text" id="fatherOcc">
+    </div>
+    <div class="row"><label>Mother's Name</label>
+      <input type="text" id="motherName">
+      <span class="field-error" id="motherName-err"></span>
+    </div>
+    <div class="row">
+      <label>Mother's Phone</label>
+      <input type="tel" id="motherPhone" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      <span class="field-error" id="motherPhone-err">
+      </span>
+    </div>
+    <div class="row">
+      <label>Mother's Occupation</label>
+      <input type="text" id="motherOcc">
+    </div>
 
-    <!-- SCHOOL DETAILS -->
     <div class="section-heading">School Details</div>
 
     <div class="row">
@@ -164,43 +209,62 @@
       </span>
     </div>
 
-    <!-- Shown only when Going is selected -->
     <div id="schoolFields" style="display:none;">
       <div class="row">
         <label>School Name</label>
         <input type="text" id="schoolName">
+        <span class="field-error" id="schoolName-err"></span>
       </div>
       <div class="row">
         <label>Standard / Section</label>
         <input type="text" id="schoolStandard">
+        <span class="field-error" id="schoolStandard-err"></span>
       </div>
       <div class="row">
         <label>School Address</label>
         <input type="text" id="schoolAddress">
+        <span class="field-error" id="schoolAddress-err"></span>
       </div>
     </div>
 
-    <!-- ADDRESS DETAILS -->
+
     <div class="section-heading">Address Details</div>
 
     <div class="address-row">
       <div class="address-block">
         <label>Current Address</label>
         <textarea id="currentAddress" rows="4"></textarea>
+        <span class="field-error" id="currentAddress-err"></span>
       </div>
       <div class="address-block">
         <label>Permanent Address</label>
         <textarea id="permanentAddress" rows="4"></textarea>
+        <span class="field-error" id="permanentAddress-err"></span>
       </div>
     </div>
 
-    <!-- GUARDIAN DETAILS -->
-    <div class="section-heading">Guardian Details</div>
 
-    <div class="row"><label>Guardian Name</label><input type="text"></div>
-    <div class="row"><label>Relationship</label><input type="text"></div>
-    <div class="row"><label>Guardian Phone</label><input type="tel" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')"></div>
-    <div class="row full-row"><label>Guardian Address</label><input type="text"></div>
+    <div class="section-heading">Guardian Details <span class="optional-badge">Optional</span></div>
+
+    <div class="row"><label>Guardian Name</label>
+      <input type="text" id="guardianName">
+    </div>
+    <div id="guardianFields" style="display:none;">
+      <div class="row">
+        <label>Relationship</label>
+        <input type="text" id="guardianRelation">
+        <span class="field-error" id="guardianRelation-err"></span>
+      </div>
+      <div class="row"><label>Guardian Phone</label>
+        <input type="tel" id="guardianPhone" maxlength="10" placeholder="10-digit number" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+        <span class="field-error" id="guardianPhone-err"></span>
+      </div>
+      <div class="row full-row">
+        <label>Guardian Address</label>
+        <input type="text" id="guardianAddress">
+        <span class="field-error" id="guardianAddress-err"></span>
+      </div>
+    </div>
 
     <div class="submit-row">
       <button type="submit">Submit Application</button>
