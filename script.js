@@ -401,11 +401,10 @@ var liveFields = [
   });
 
 
-  var phoneFields = [
-    ["fatherPhone","fatherPhone-err","Father's Phone"],
-    ["motherPhone","motherPhone-err","Mother's Phone"],
-    ["guardianPhone","guardianPhone-err","Guardian Phone"]
-  ];
+ var phoneFields = [
+  ["fatherPhone","fatherPhone-err","Father's Phone"],
+  ["motherPhone","motherPhone-err","Mother's Phone"]
+];
 
   phoneFields.forEach(function(p) {
     var el = document.getElementById(p[0]);
@@ -421,6 +420,28 @@ var liveFields = [
       }
     });
   });
+
+  var guardianPhone = document.getElementById("guardianPhone");
+
+if (guardianPhone) {
+  guardianPhone.addEventListener("input", function () {
+
+    // only numbers allowed
+    this.value = this.value.replace(/\D/g, "");
+
+    var val = this.value.trim();
+
+    if (!val) {
+      clearErr("guardianPhone","guardianPhone-err");
+    }
+    else if (!isValidIndianPhone(val)) {
+      showErr("guardianPhone","guardianPhone-err","Invalid mobile number");
+    }
+    else {
+      clearErr("guardianPhone","guardianPhone-err");
+    }
+  });
+}
 
   var form = document.getElementById("admissionForm");
 
@@ -491,29 +512,47 @@ req("motherOccupation","motherOccupation-err","Mother Occupation");
     req("currentAddress","currentAddress-err","Current Address");
     req("permanentAddress","permanentAddress-err","Permanent Address");
 
-  req("guardianName","guardianName-err","Guardian Name");
-req("guardianRelation","guardianRelation-err","Relationship");
-req("guardianAddress","guardianAddress-err","Guardian Address");
+ var guardianName = document.getElementById("guardianName").value.trim();
+var guardianRelation = document.getElementById("guardianRelation").value.trim();
+var guardianAddress = document.getElementById("guardianAddress").value.trim();
+var gPhone = document.getElementById("guardianPhone").value.trim();
 
-var gPhone = document.getElementById("guardianPhone");
+// If Guardian Name is entered, make other fields mandatory
+if (guardianName) {
 
-if (!gPhone.value.trim()) {
-  showErr(
-    "guardianPhone",
-    "guardianPhone-err",
-    "Guardian Phone is required!"
-  );
-  isValid = false;
-}
-else if (!isValidIndianPhone(gPhone.value.trim())) {
-  showErr(
-    "guardianPhone",
-    "guardianPhone-err",
-    "Invalid mobile number"
-  );
-  isValid = false;
-}
-else {
+  clearErr("guardianName","guardianName-err");
+
+  if (!guardianRelation) {
+    showErr("guardianRelation","guardianRelation-err","Relationship is required!");
+    isValid = false;
+  } else {
+    clearErr("guardianRelation","guardianRelation-err");
+  }
+
+  if (!guardianAddress) {
+    showErr("guardianAddress","guardianAddress-err","Guardian Address is required!");
+    isValid = false;
+  } else {
+    clearErr("guardianAddress","guardianAddress-err");
+  }
+
+  if (!gPhone) {
+    showErr("guardianPhone","guardianPhone-err","Guardian Phone is required!");
+    isValid = false;
+  }
+  else if (!isValidIndianPhone(gPhone)) {
+    showErr("guardianPhone","guardianPhone-err","Invalid mobile number");
+    isValid = false;
+  }
+  else {
+    clearErr("guardianPhone","guardianPhone-err");
+  }
+
+} else {
+  // Guardian section completely optional
+  clearErr("guardianName","guardianName-err");
+  clearErr("guardianRelation","guardianRelation-err");
+  clearErr("guardianAddress","guardianAddress-err");
   clearErr("guardianPhone","guardianPhone-err");
 }
 
