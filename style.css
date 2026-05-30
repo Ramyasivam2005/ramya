@@ -659,7 +659,6 @@ body {
 
 .lightbox-close:hover { background: rgba(255,255,255,0.28); transform: rotate(90deg); }
 
-/* ── Lightbox Controls (Zoom In / Zoom Out / Rotate) ── */
 .lightbox-controls {
   position: fixed;
   bottom: 32px;

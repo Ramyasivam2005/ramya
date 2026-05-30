@@ -298,7 +298,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click",function(){closeCalendar();});
     renderDays();
 
-    // expose reset function
     calEl._resetCal = function() {
       selectedDate = null;
       hiddenInput.value = "";
@@ -426,7 +425,7 @@ var liveFields = [
 if (guardianPhone) {
   guardianPhone.addEventListener("input", function () {
 
-    // only numbers allowed
+ 
     this.value = this.value.replace(/\D/g, "");
 
     var val = this.value.trim();
@@ -464,7 +463,6 @@ if (guardianPhone) {
     req("referralType","referralType-err","Referral Type");
     req("admissionDate","admissionDate-err","Admission Date");
 
-    // Email
     var emailVal = document.getElementById("email");
     if (emailVal) {
       if (!emailVal.value.trim()) {
@@ -517,7 +515,7 @@ var guardianRelation = document.getElementById("guardianRelation").value.trim();
 var guardianAddress = document.getElementById("guardianAddress").value.trim();
 var gPhone = document.getElementById("guardianPhone").value.trim();
 
-// If Guardian Name is entered, make other fields mandatory
+
 if (guardianName) {
 
   clearErr("guardianName","guardianName-err");
@@ -549,7 +547,7 @@ if (guardianName) {
   }
 
 } else {
-  // Guardian section completely optional
+
   clearErr("guardianName","guardianName-err");
   clearErr("guardianRelation","guardianRelation-err");
   clearErr("guardianAddress","guardianAddress-err");
@@ -562,28 +560,21 @@ if (guardianName) {
     } else {
       alert("Application submitted successfully!");
 
-      // ── Reset standard form fields ──
       form.reset();
 
-      // ── Reset password eye icon back to open ──
+
       if (passwordInput) passwordInput.type = "password";
       if (toggleBtn) toggleBtn.innerHTML = eyeOpen;
-
-      // ── Reset Date pickers ──
       if (dobCal && dobCal._resetCal) dobCal._resetCal();
       if (admCal && admCal._resetCal) admCal._resetCal();
 
-      // ── Reset Photo upload ──
       photoInput.value          = "";
       photoPreviewLarge.src     = "";
       photoFileName.textContent = "";
       photoBox.style.display        = "block";
       photoPreviewBox.style.display = "none";
-
-      // ── Hide school fields ──
       schoolFields.style.display = "none";
 
-      // ── Clear all error highlights and messages ──
       document.querySelectorAll(".input-error").forEach(function(el) {
         el.classList.remove("input-error");
       });
@@ -592,7 +583,6 @@ if (guardianName) {
         el.className   = "field-error";
       });
 
-      // ── Scroll back to top ──
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   });
